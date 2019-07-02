@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <div class="list-group">
+      <!-- [routerLink]="['/servers',server.id,'edit']" -->
+      <a
+      [routerLink]="['/servers',server.id]"
+      [queryParams]="{allowedit:server.id === 3 ? '1': '0'}"
+      fragment="loading"
+      href="#"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <!-- AbsolutePath -->
+    <!-- <a routerLink="/servers">RelodPage</a> -->
+    <!-- relative path -->
+    <a routerLink="servers">RelodPage</a> 
+    <!-- <button class="btn btn-primary" (click)="OnReload()">ReloadPage</button>
+    <app-edit-server></app-edit-server>
+    <hr> -->
+    <!-- loading single server component 
+    therefore we also loading it if we dont have Id available
+    we soon learn how we can nest  onother route in there to have
+    some kind of child routing to load this route dynamically
+     next to our menu-->
+    <router-outlet></router-outlet>
+  </div>
+</div>
