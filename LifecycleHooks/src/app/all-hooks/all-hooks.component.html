@@ -1,0 +1,11 @@
+<!-- <label>Name</label><input type="text" [(ngModel)]="Name">
+<p>You EnteredName:{{Name}}</p> -->
+<button class="btn btn-danger"(click)="ondestroyFirst()">DestroyComponent</button>
+<ng-content></ng-content>
+<!-- <input type="text" [(ngModel)]="newServerContent">
+<button (click)="onadd()">Add Data</button>
+<p #header>{{newServerContent}}</p> -->
+<p #heading>You EnteredName:{{datafromParent}}</p>
+<app-child-ofchild [data]="arraydata">
+    <p *ngIf="true">{{data}}</p>
+</app-child-ofchild> 

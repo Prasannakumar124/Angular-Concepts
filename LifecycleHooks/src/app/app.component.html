@@ -1,0 +1,10 @@
+<label>Name</label><input type="text" [(ngModel)]="Name">
+
+
+<app-all-hooks [datafromParent]="Name">
+    <p #paracontent *ngFor="let data of ArrayDetails">{{data.name}}</p>
+</app-all-hooks>
+
+<!-- <app-all-hooks></app-all-hooks> -->
+
+<button class="btn btn-success" (click)="fun()">click me</button>
