@@ -1,0 +1,37 @@
+<div class="container">
+  <app-cockpit 
+  (servercreated)="onServerAdded($event)"
+  (blueprintcreated)="onBlueprintcreated($event)">
+</app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="changeData()">change data</button>
+      <button class="btn btn-danger"(click)="ondestroyFirst()">DestroyComponent</button>
+      
+      <app-server-element *ngFor="let serverElement of serverElements"
+      [element]="serverElement"
+      [name]="serverElement.name"
+      >
+      <!-- <p #paracontent>
+        <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+        <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+      </p> -->
+      </app-server-element>
+    </div>
+  </div>
+  
+</div>
+
+<app-x (datafromChild)="getdata($event)" 
+[datafromRoot]="rcd"
+[datafromYsibiling]="ynewData"
+>This is app-x content</app-x>
+<!-- <p>prasanna</p> -->
+<!-- <p>{{childdatap1.name}}</p>
+<p>{{childdatap1.type}}</p>   -->
+<p *ngFor="let key of keyss;">{{key}}:{{childdatap1[key]}}</p>
+
+
+<hr><hr><hr>
+<app-y (ydata)="sibilingevent($event)"></app-y>
