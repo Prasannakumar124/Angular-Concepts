@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="signupForm" (ngSubmit)="onsubmit()">
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" formControlName='username' class="form-control">
+          </div>
+          <span class="help-desk" class="highliter"
+          *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
+          >
+          <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is invalid!</span>
+          <span *ngIf="signupForm.get('userData.username').errors?.required">This field is required!</span>
+        </span>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input type="email" id="email" formControlName="email" class="form-control">
+          </div>
+          <span class="help-desk" class="highliter"
+          *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched"
+          >Please enter valid email</span>
+        </div>
+        <div class="radio" *ngFor="let gender of genders">
+            <label><input type="radio" formControlName="gender" [value]="gender">{{gender}}</label>
+        </div>
+        <div formArrayName='hobbies'>
+          <h3>Your Hobbies</h3>
+          <button class="btn btn-primary" type="button" (click)="onAddHoliday()">Add Hobbies</button>
+          <div class="form-group" 
+          *ngFor="let hobbiecontrol of signupForm.get('hobbies').controls let i=index">
+          <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit">Submit</button><br>
+        <button class="btn btn-primary" type="button" (click)="reset()">Reset</button> <br>
+       <button class="btn btn-primary" type="button" (click)="displaydata()">DisplayData</button>
+        <!-- <span class="help-desk" class="highliter"
+        *ngIf="!signupForm.valid && signupForm.touched"
+        >Please enter valid Data</span>  -->
+      </form>
+    </div>
+  </div>
+</div>
+
+<hr style="border:3px soild red">
+<div class="container">
+  <div class="row" *ngIf="submitted">
+    <div class="col-x-12">
+      <h3>Your Data</h3>
+      <p>UserName: {{user.userName}}</p>
+      <p>Mail: {{user.email}}</p>
+      <p>gender: {{user.gender}}</p>
+      <div *ngFor="let hobbie of values">
+      <p> hobbies: {{hobbie}}</p> 
+      </div>
+    </div>
+  </div>
+</div>
