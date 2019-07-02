@@ -1,0 +1,16 @@
+<!-- in normal javascript we would have to manually set up a listner to any changes of the input value 
+Get this value and then somehow get  access to this  paragraph  and output it there.
+
+But:
+
+in Angular it makes it simpler by using data Binding concept
+-->
+
+
+<input type="text" [(ngModel)]="name">
+<!-- ngModel= is always managed by angular and even if u change someother value that 
+  is something which will always update dynamicall.
+  
+  Its a connection between view and .ts file
+ -->
+<p>{{name}}</p>
